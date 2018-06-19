@@ -145,9 +145,50 @@ public class calculator {
         }
     }
 
+    /**
+     * 检查表达式里正反括号是否匹配
+     *
+     * @param
+     * @throws Exception
+     */
+    public static boolean checkExpression(String expression) {
+        int top = 0;//栈顶指针
+        for (int i = 0; i < expression.length(); i++) {
+            int c = isBracket(expression.charAt(i));
+            if (c == 0) {
+                continue;
+            } else if (c == 1) {
+                top++;
+            } else if (c == 2) {
+                top--;
+                if (top < 0) {
+                    //此时说明反括号比正括号多
+                    return false;
+                }
+            }
+        }
+        if (top == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static int isBracket(char a) {
+        if (a == '{' || a == '[' || a == '(') {
+            return 1;
+        } else if (a == '}' || a == ']' || a == ')') {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println(toReversePolishNotation("16+2*(3/4)"));
         System.out.println(calculate(toReversePolishNotation("16+2*(3/4)")));
+        System.out.println(checkExpression("[a+b*(5-4)]{x+b+b(({1+2)}}"));
     }
 
 }
