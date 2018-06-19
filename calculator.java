@@ -6,6 +6,7 @@ import java.util.Stack;
 
 /**
  * Created by cuichengrui on 17/06/2018.
+ * 简单计算器 （涉及中缀表达式与前缀、后缀表达式之间的转换）
  */
 public class calculator {
 
